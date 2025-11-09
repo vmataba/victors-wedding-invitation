@@ -594,8 +594,8 @@ export default function InvitationCard() {
                         sx={{ 
                           fontFamily: '"Poppins", sans-serif',
                           color: '#1b5e20', 
-                          fontWeight: 700,
-                          fontSize: { xs: '1.3rem', sm: '1.5rem' },
+                          fontWeight: 600,
+                          fontSize: { xs: '1.1rem', sm: '1.3rem' },
                           letterSpacing: '0.02em',
                           lineHeight: 1.2,
                           overflow: 'hidden',
