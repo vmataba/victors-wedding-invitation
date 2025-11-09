@@ -391,43 +391,21 @@ export default function InvitationCard() {
                     <Typography sx={{ color: '#66bb6a', fontSize: '1.2rem', opacity: 0.7 }}>🌸</Typography>
                   </Box>
 
-                  {/* Save the Date */}
-                  <Typography
-                    variant="h2"
-                    sx={{
-                      fontFamily: '"Dancing Script", cursive',
-                      fontWeight: 400,
-                      color: '#2e7d32',
-                      mb: 1,
-                      fontSize: { xs: '2.2rem', sm: '3rem' },
-                      textShadow: '1px 1px 2px rgba(0,0,0,0.08)',
-                      letterSpacing: '0.02em',
-                    }}
-                  >
-                    Invitation
-                  </Typography>
-
-                  {/* Decorative divider */}
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, mb: 1.5 }}>
-                    <Box sx={{ width: 40, height: '1px', bgcolor: '#2e7d32', opacity: 0.4 }} />
-                    <Typography sx={{ color: '#81c784', fontSize: '1rem' }}>🌿</Typography>
-                    <Box sx={{ width: 40, height: '1px', bgcolor: '#2e7d32', opacity: 0.4 }} />
-                  </Box>
-
-                  {/* Wedding announcement */}
+                  {/* Opening line */}
                   <Typography
                     variant="body1"
                     sx={{
-                      fontFamily: '"Cinzel", serif',
+                      fontFamily: '"Josefin Sans", sans-serif',
                       color: '#424242',
-                      fontSize: { xs: '0.8rem', sm: '0.9rem' },
-                      mb: 1.5,
-                      fontWeight: 500,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
+                      fontSize: { xs: '0.85rem', sm: '0.95rem' },
+                      mb: 2,
+                      fontWeight: 400,
+                      fontStyle: 'italic',
+                      letterSpacing: '0.05em',
+                      lineHeight: 1.6,
                     }}
                   >
-                    To the Wedding Of
+                    Together with their families
                   </Typography>
 
                   {/* Groom & Bride Names - One line with ring */}
@@ -543,6 +521,37 @@ export default function InvitationCard() {
                       {weddingDetails.brideName}
                     </Typography>
                   </Box>
+
+                  {/* Request line */}
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontFamily: '"Josefin Sans", sans-serif',
+                      color: '#424242',
+                      fontSize: { xs: '0.85rem', sm: '0.95rem' },
+                      mb: 1.5,
+                      fontWeight: 400,
+                      letterSpacing: '0.05em',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    request the honour of your presence
+                  </Typography>
+
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontFamily: '"Josefin Sans", sans-serif',
+                      color: '#424242',
+                      fontSize: { xs: '0.85rem', sm: '0.95rem' },
+                      mb: 2.5,
+                      fontWeight: 400,
+                      letterSpacing: '0.05em',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    at the celebration of their marriage
+                  </Typography>
 
                   {/* Decorative divider */}
                   <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, my: 2 }}>
@@ -674,22 +683,7 @@ export default function InvitationCard() {
                       boxShadow: '0 4px 12px rgba(46, 125, 50, 0.15)',
                     }}
                   >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontFamily: '"Bungee", cursive',
-                        color: '#2e7d32',
-                        fontSize: { xs: '0.8rem', sm: '0.85rem' },
-                        fontWeight: 400,
-                        letterSpacing: '0.05em',
-                        textTransform: 'uppercase',
-                        mb: 1.5,
-                      }}
-                    >
-                      Ceremony Details
-                    </Typography>
-
-                    <Stack spacing={1.5}>
+                    <Stack spacing={1.5} sx={{ textAlign: 'center' }}>
                       <Box>
                         <Typography
                           variant="h5"
@@ -713,7 +707,7 @@ export default function InvitationCard() {
                             fontWeight: 400,
                           }}
                         >
-                          {weddingDetails.time}
+                          at {weddingDetails.time}
                         </Typography>
                       </Box>
 
@@ -740,11 +734,28 @@ export default function InvitationCard() {
                             color: '#616161',
                             fontSize: { xs: '0.9rem', sm: '0.95rem' },
                             fontWeight: 400,
+                            mb: 1.5,
                           }}
                         >
                           {weddingDetails.address}
                         </Typography>
                       </Box>
+
+                      <Divider sx={{ borderColor: '#2e7d32', opacity: 0.3 }} />
+
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          fontFamily: '"Josefin Sans", sans-serif',
+                          color: '#424242',
+                          fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                          fontWeight: 400,
+                          fontStyle: 'italic',
+                          letterSpacing: '0.05em',
+                        }}
+                      >
+                        Reception to follow
+                      </Typography>
                     </Stack>
                   </Box>
 
