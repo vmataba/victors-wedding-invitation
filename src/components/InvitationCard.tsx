@@ -404,7 +404,7 @@ export default function InvitationCard() {
                       letterSpacing: '0.02em',
                     }}
                   >
-                    Save the Date
+                    Invitation
                   </Typography>
 
                   {/* Decorative divider */}
@@ -427,7 +427,7 @@ export default function InvitationCard() {
                       textTransform: 'uppercase',
                     }}
                   >
-                    For the Wedding Of
+                    To the Wedding Of
                   </Typography>
 
                   {/* Groom & Bride Names - One line with ring */}
