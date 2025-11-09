@@ -160,7 +160,7 @@ export default function VerificationSystem() {
 
   const handleViewInvitation = () => {
     if (verifiedInvitation) {
-      navigate(`/invitation/${verifiedInvitation.guestId}`);
+      navigate(`/invitation/${verifiedInvitation.id}`);
     }
   };
 
@@ -432,7 +432,7 @@ export default function VerificationSystem() {
                               Guest ID
                             </Typography>
                             <Typography variant="h6" sx={{ color: '#4a0e4e', fontWeight: 600 }}>
-                              {verifiedInvitation.guest.id}
+                              {verifiedInvitation.id}
                             </Typography>
                           </Box>
 
@@ -443,18 +443,7 @@ export default function VerificationSystem() {
                               Name
                             </Typography>
                             <Typography variant="h6" sx={{ color: '#4a0e4e', fontWeight: 600 }}>
-                              {verifiedInvitation.guest.name}
-                            </Typography>
-                          </Box>
-
-                          <Divider sx={{ borderColor: 'rgba(212, 175, 55, 0.3)' }} />
-
-                          <Box>
-                            <Typography variant="subtitle2" sx={{ color: '#6b1b4d', opacity: 0.7 }}>
-                              Phone
-                            </Typography>
-                            <Typography variant="h6" sx={{ color: '#4a0e4e', fontWeight: 600 }}>
-                              {verifiedInvitation.guest.phone}
+                              {verifiedInvitation.name}
                             </Typography>
                           </Box>
 
@@ -465,7 +454,7 @@ export default function VerificationSystem() {
                               Number of Guests
                             </Typography>
                             <Typography variant="h6" sx={{ color: '#4a0e4e', fontWeight: 600 }}>
-                              {verifiedInvitation.guest.guestCount}
+                              {verifiedInvitation.totalInvitees}
                             </Typography>
                           </Box>
 

@@ -94,7 +94,7 @@ export default function InvitationCard() {
     );
   }
 
-  const { guest, weddingDetails } = invitation;
+  const { weddingDetails } = invitation;
 
   return (
     <Box
@@ -625,7 +625,7 @@ export default function InvitationCard() {
                             letterSpacing: '0.02em',
                           }}
                         >
-                          {guest.name}
+                          {invitation.name}
                         </Typography>
                       </Box>
 
@@ -654,7 +654,7 @@ export default function InvitationCard() {
                             mt: 0.3,
                           }}
                         >
-                          {guest.guestCount}
+                          {invitation.totalInvitees}
                         </Typography>
                       </Box>
                     </Stack>
@@ -805,7 +805,7 @@ export default function InvitationCard() {
                           textTransform: 'uppercase',
                         }}
                       >
-                        Serial No: {guest.id}
+                        Serial No: {invitation.id}
                       </Typography>
                     </Box>
 
@@ -822,7 +822,7 @@ export default function InvitationCard() {
                       }}
                     >
                       <QRCodeSVG
-                        value={`${window.location.origin}/invitation/${guest.id}`}
+                        value={`${window.location.origin}/invitation/${invitation.id}`}
                         size={60}
                         level="M"
                         includeMargin={false}
