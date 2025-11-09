@@ -13,6 +13,7 @@ import {
   Container,
   Stack,
 } from '@mui/material';
+import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
 import { QRCodeSVG } from 'qrcode.react';
 import { fetchInvitationByGuestId } from '../services/api';
 import type { InvitationCardWithWedding as InvitationCardType } from '../services/api';
@@ -152,93 +153,223 @@ export default function InvitationCard() {
             }}
           >
             {/* Falling stars decoration */}
+            {/* Star 1 - Falling diagonally */}
             <Box
               sx={{
                 position: 'absolute',
-                top: 20,
+                top: -20,
                 left: '10%',
                 fontSize: '1.2rem',
                 color: '#d4af37',
-                opacity: 0.6,
                 zIndex: 3,
-                animation: 'twinkle 3s ease-in-out infinite',
-                '@keyframes twinkle': {
-                  '0%, 100%': { opacity: 0.6, transform: 'scale(1)' },
-                  '50%': { opacity: 1, transform: 'scale(1.2)' },
+                animation: 'fallingStar1 8s linear infinite',
+                '@keyframes fallingStar1': {
+                  '0%': { 
+                    opacity: 0, 
+                    transform: 'translate(0, 0) rotate(0deg)',
+                  },
+                  '10%': { 
+                    opacity: 0.8,
+                  },
+                  '90%': { 
+                    opacity: 0.8,
+                  },
+                  '100%': { 
+                    opacity: 0, 
+                    transform: 'translate(100px, 600px) rotate(360deg)',
+                  },
                 },
               }}
             >
               ✨
             </Box>
+            
+            {/* Star 2 - Falling from right */}
             <Box
               sx={{
                 position: 'absolute',
-                top: 40,
+                top: -30,
                 right: '15%',
                 fontSize: '1rem',
                 color: '#d4af37',
-                opacity: 0.5,
                 zIndex: 3,
-                animation: 'twinkle 2.5s ease-in-out infinite 0.5s',
+                animation: 'fallingStar2 10s linear infinite 2s',
+                '@keyframes fallingStar2': {
+                  '0%': { 
+                    opacity: 0, 
+                    transform: 'translate(0, 0) rotate(0deg)',
+                  },
+                  '10%': { 
+                    opacity: 1,
+                  },
+                  '90%': { 
+                    opacity: 1,
+                  },
+                  '100%': { 
+                    opacity: 0, 
+                    transform: 'translate(-80px, 650px) rotate(-360deg)',
+                  },
+                },
               }}
             >
               ⭐
             </Box>
+            
+            {/* Star 3 - Falling from left middle */}
             <Box
               sx={{
                 position: 'absolute',
-                top: '30%',
+                top: -10,
                 left: '5%',
                 fontSize: '0.9rem',
                 color: '#d4af37',
-                opacity: 0.4,
                 zIndex: 3,
-                animation: 'twinkle 3.5s ease-in-out infinite 1s',
+                animation: 'fallingStar3 12s linear infinite 4s',
+                '@keyframes fallingStar3': {
+                  '0%': { 
+                    opacity: 0, 
+                    transform: 'translate(0, 0) scale(0.5) rotate(0deg)',
+                  },
+                  '10%': { 
+                    opacity: 0.9,
+                    transform: 'translate(0, 50px) scale(1) rotate(45deg)',
+                  },
+                  '90%': { 
+                    opacity: 0.9,
+                  },
+                  '100%': { 
+                    opacity: 0, 
+                    transform: 'translate(120px, 700px) scale(0.5) rotate(360deg)',
+                  },
+                },
               }}
             >
               ✨
             </Box>
+            
+            {/* Star 4 - Falling from right middle */}
             <Box
               sx={{
                 position: 'absolute',
-                top: '60%',
+                top: -25,
                 right: '8%',
                 fontSize: '1.1rem',
                 color: '#d4af37',
-                opacity: 0.5,
                 zIndex: 3,
-                animation: 'twinkle 2.8s ease-in-out infinite 1.5s',
+                animation: 'fallingStar4 9s linear infinite 6s',
+                '@keyframes fallingStar4': {
+                  '0%': { 
+                    opacity: 0, 
+                    transform: 'translate(0, 0) rotate(0deg)',
+                  },
+                  '15%': { 
+                    opacity: 0.85,
+                  },
+                  '85%': { 
+                    opacity: 0.85,
+                  },
+                  '100%': { 
+                    opacity: 0, 
+                    transform: 'translate(-100px, 600px) rotate(-270deg)',
+                  },
+                },
               }}
             >
               ⭐
             </Box>
+            
+            {/* Star 5 - Falling from center */}
             <Box
               sx={{
                 position: 'absolute',
-                bottom: 60,
-                left: '12%',
+                top: -15,
+                left: '50%',
                 fontSize: '1rem',
                 color: '#d4af37',
-                opacity: 0.6,
                 zIndex: 3,
-                animation: 'twinkle 3.2s ease-in-out infinite 0.8s',
+                animation: 'fallingStar5 11s linear infinite 1s',
+                '@keyframes fallingStar5': {
+                  '0%': { 
+                    opacity: 0, 
+                    transform: 'translate(-50%, 0) rotate(0deg)',
+                  },
+                  '10%': { 
+                    opacity: 1,
+                  },
+                  '90%': { 
+                    opacity: 1,
+                  },
+                  '100%': { 
+                    opacity: 0, 
+                    transform: 'translate(30px, 680px) rotate(360deg)',
+                  },
+                },
               }}
             >
               ✨
             </Box>
+            
+            {/* Star 6 - Falling from left */}
             <Box
               sx={{
                 position: 'absolute',
-                bottom: 40,
-                right: '20%',
+                top: -20,
+                left: '20%',
                 fontSize: '0.8rem',
                 color: '#d4af37',
-                opacity: 0.4,
                 zIndex: 3,
-                animation: 'twinkle 2.6s ease-in-out infinite 1.2s',
+                animation: 'fallingStar6 13s linear infinite 5s',
+                '@keyframes fallingStar6': {
+                  '0%': { 
+                    opacity: 0, 
+                    transform: 'translate(0, 0) rotate(0deg)',
+                  },
+                  '12%': { 
+                    opacity: 0.7,
+                  },
+                  '88%': { 
+                    opacity: 0.7,
+                  },
+                  '100%': { 
+                    opacity: 0, 
+                    transform: 'translate(90px, 720px) rotate(360deg)',
+                  },
+                },
               }}
             >
               ⭐
+            </Box>
+            
+            {/* Star 7 - Falling from right */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: -30,
+                right: '25%',
+                fontSize: '1.15rem',
+                color: '#d4af37',
+                zIndex: 3,
+                animation: 'fallingStar7 10.5s linear infinite 3s',
+                '@keyframes fallingStar7': {
+                  '0%': { 
+                    opacity: 0, 
+                    transform: 'translate(0, 0) scale(0.8) rotate(0deg)',
+                  },
+                  '10%': { 
+                    opacity: 0.95,
+                    transform: 'translate(0, 40px) scale(1) rotate(30deg)',
+                  },
+                  '90%': { 
+                    opacity: 0.95,
+                  },
+                  '100%': { 
+                    opacity: 0, 
+                    transform: 'translate(-110px, 660px) scale(0.8) rotate(-360deg)',
+                  },
+                },
+              }}
+            >
+              ✨
             </Box>
 
             {/* Main Content */}
@@ -264,13 +395,13 @@ export default function InvitationCard() {
                   <Typography
                     variant="h2"
                     sx={{
-                      fontFamily: '"Great Vibes", "Tangerine", cursive',
+                      fontFamily: '"Allura", "Great Vibes", cursive',
                       fontWeight: 400,
                       color: '#2e7d32',
                       mb: 1,
-                      fontSize: { xs: '1.8rem', sm: '2.4rem' },
+                      fontSize: { xs: '2.2rem', sm: '3rem' },
                       textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                      letterSpacing: '0.02em',
+                      letterSpacing: '0.05em',
                     }}
                   >
                     Save the Date
@@ -287,11 +418,12 @@ export default function InvitationCard() {
                   <Typography
                     variant="body1"
                     sx={{
+                      fontFamily: '"Cinzel", serif',
                       color: '#424242',
-                      fontSize: { xs: '0.75rem', sm: '0.85rem' },
+                      fontSize: { xs: '0.8rem', sm: '0.9rem' },
                       mb: 1.5,
-                      fontWeight: 400,
-                      letterSpacing: '0.05em',
+                      fontWeight: 500,
+                      letterSpacing: '0.15em',
                       textTransform: 'uppercase',
                     }}
                   >
@@ -312,11 +444,11 @@ export default function InvitationCard() {
                     <Typography
                       variant="h3"
                       sx={{
-                        fontFamily: '"Great Vibes", "Tangerine", cursive',
+                        fontFamily: '"Alex Brush", "Allura", cursive',
                         color: '#1b5e20',
-                        fontSize: { xs: '2rem', sm: '2.8rem' },
+                        fontSize: { xs: '2.5rem', sm: '3.5rem' },
                         fontWeight: 400,
-                        lineHeight: 1,
+                        lineHeight: 1.2,
                         textShadow: '2px 2px 6px rgba(0,0,0,0.15)',
                         animation: 'fadeInLeft 1s ease-out',
                         '@keyframes fadeInLeft': {
@@ -333,60 +465,111 @@ export default function InvitationCard() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        animation: 'ringPulse 2s ease-in-out infinite',
-                        '@keyframes ringPulse': {
-                          '0%, 100%': { transform: 'scale(1)' },
-                          '50%': { transform: 'scale(1.15)' },
-                        },
+                        position: 'relative',
+                        mx: 1,
                       }}
                     >
+                      {/* First Ring */}
                       <Box
-                        component="svg"
-                        viewBox="0 0 80 50"
                         sx={{
-                          width: { xs: '56px', sm: '72px' },
-                          height: { xs: '35px', sm: '45px' },
-                          filter: 'drop-shadow(0 2px 6px rgba(212, 175, 55, 0.5))',
+                          position: 'relative',
+                          animation: 'ringPulse 2.5s ease-in-out infinite',
+                          '@keyframes ringPulse': {
+                            '0%, 100%': { transform: 'scale(1) rotate(0deg)' },
+                            '50%': { transform: 'scale(1.1) rotate(-5deg)' },
+                          },
                         }}
                       >
-                        <defs>
-                          <linearGradient id="ringGold" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="#ffd700" />
-                            <stop offset="40%" stopColor="#d4af37" />
-                            <stop offset="100%" stopColor="#b8860b" />
-                          </linearGradient>
-                        </defs>
-                        
-                        {/* Left Ring */}
-                        <circle
-                          cx="25"
-                          cy="25"
-                          r="15"
-                          fill="none"
-                          stroke="url(#ringGold)"
-                          strokeWidth="5"
+                        <PanoramaFishEyeIcon
+                          sx={{
+                            fontSize: { xs: '2rem', sm: '2.5rem' },
+                            color: '#d4af37',
+                            filter: 'drop-shadow(0 3px 8px rgba(212, 175, 55, 0.7))',
+                            strokeWidth: 3,
+                            position: 'relative',
+                            zIndex: 2,
+                          }}
                         />
-                        
-                        {/* Right Ring */}
-                        <circle
-                          cx="50"
-                          cy="25"
-                          r="15"
-                          fill="none"
-                          stroke="url(#ringGold)"
-                          strokeWidth="5"
+                        {/* Inner glow */}
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: '60%',
+                            height: '60%',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%)',
+                            zIndex: 1,
+                          }}
                         />
+                      </Box>
+                      
+                      {/* Second Ring - Overlapping */}
+                      <Box
+                        sx={{
+                          position: 'relative',
+                          marginLeft: '-0.8rem',
+                          animation: 'ringPulse2 2.5s ease-in-out infinite',
+                          '@keyframes ringPulse2': {
+                            '0%, 100%': { transform: 'scale(1) rotate(0deg)' },
+                            '50%': { transform: 'scale(1.1) rotate(5deg)' },
+                          },
+                        }}
+                      >
+                        <PanoramaFishEyeIcon
+                          sx={{
+                            fontSize: { xs: '2rem', sm: '2.5rem' },
+                            color: '#c9a961',
+                            filter: 'drop-shadow(0 3px 8px rgba(201, 169, 97, 0.7))',
+                            strokeWidth: 3,
+                            position: 'relative',
+                            zIndex: 1,
+                          }}
+                        />
+                        {/* Inner glow */}
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: '60%',
+                            height: '60%',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(201, 169, 97, 0.3) 0%, transparent 70%)',
+                            zIndex: 0,
+                          }}
+                        />
+                      </Box>
+
+                      {/* Sparkle effect */}
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          top: '-8px',
+                          right: '-8px',
+                          fontSize: '1rem',
+                          animation: 'sparkle 2s ease-in-out infinite',
+                          '@keyframes sparkle': {
+                            '0%, 100%': { opacity: 0, transform: 'scale(0.5) rotate(0deg)' },
+                            '50%': { opacity: 1, transform: 'scale(1) rotate(180deg)' },
+                          },
+                        }}
+                      >
+                        ✨
                       </Box>
                     </Box>
                     
                     <Typography
                       variant="h3"
                       sx={{
-                        fontFamily: '"Great Vibes", "Tangerine", cursive',
+                        fontFamily: '"Alex Brush", "Allura", cursive',
                         color: '#1b5e20',
-                        fontSize: { xs: '2rem', sm: '2.8rem' },
+                        fontSize: { xs: '2.5rem', sm: '3.5rem' },
                         fontWeight: 400,
-                        lineHeight: 1,
+                        lineHeight: 1.2,
                         textShadow: '2px 2px 6px rgba(0,0,0,0.15)',
                         animation: 'fadeInRight 1s ease-out',
                         '@keyframes fadeInRight': {
@@ -422,10 +605,12 @@ export default function InvitationCard() {
                         <Typography 
                           variant="body1" 
                           sx={{ 
+                            fontFamily: '"Cormorant Garamond", serif',
                             color: '#424242', 
                             mb: 0.8,
-                            fontSize: { xs: '0.85rem', sm: '0.95rem' },
+                            fontSize: { xs: '1rem', sm: '1.1rem' },
                             fontStyle: 'italic',
+                            fontWeight: 500,
                           }}
                         >
                           We Welcome You
@@ -433,9 +618,11 @@ export default function InvitationCard() {
                         <Typography 
                           variant="h5" 
                           sx={{ 
+                            fontFamily: '"Playfair Display", serif',
                             color: '#1b5e20', 
-                            fontWeight: 600,
-                            fontSize: { xs: '1.1rem', sm: '1.3rem' },
+                            fontWeight: 700,
+                            fontSize: { xs: '1.3rem', sm: '1.5rem' },
+                            letterSpacing: '0.02em',
                           }}
                         >
                           {guest.name}
@@ -447,10 +634,12 @@ export default function InvitationCard() {
                         <Typography 
                           variant="caption" 
                           sx={{ 
+                            fontFamily: '"Cinzel", serif',
                             color: '#616161', 
                             fontSize: { xs: '0.7rem', sm: '0.75rem' },
                             textTransform: 'uppercase',
-                            letterSpacing: '0.05em',
+                            letterSpacing: '0.1em',
+                            fontWeight: 500,
                           }}
                         >
                           Number of Guests
@@ -458,9 +647,10 @@ export default function InvitationCard() {
                         <Typography 
                           variant="body1" 
                           sx={{ 
+                            fontFamily: '"Playfair Display", serif',
                             color: '#2e7d32', 
-                            fontWeight: 600,
-                            fontSize: { xs: '0.95rem', sm: '1.05rem' },
+                            fontWeight: 700,
+                            fontSize: { xs: '1.1rem', sm: '1.2rem' },
                             mt: 0.3,
                           }}
                         >
@@ -490,10 +680,11 @@ export default function InvitationCard() {
                     <Typography
                       variant="body2"
                       sx={{
+                        fontFamily: '"Cinzel", serif',
                         color: '#2e7d32',
-                        fontSize: { xs: '0.75rem', sm: '0.8rem' },
+                        fontSize: { xs: '0.8rem', sm: '0.85rem' },
                         fontWeight: 600,
-                        letterSpacing: '0.1em',
+                        letterSpacing: '0.15em',
                         textTransform: 'uppercase',
                         mb: 1.5,
                       }}
@@ -506,10 +697,12 @@ export default function InvitationCard() {
                         <Typography
                           variant="h5"
                           sx={{
+                            fontFamily: '"Playfair Display", serif',
                             color: '#1b5e20',
-                            fontSize: { xs: '1.1rem', sm: '1.3rem' },
-                            fontWeight: 600,
+                            fontSize: { xs: '1.2rem', sm: '1.4rem' },
+                            fontWeight: 700,
                             mb: 0.3,
+                            letterSpacing: '0.02em',
                           }}
                         >
                           {weddingDetails.date}
@@ -517,8 +710,10 @@ export default function InvitationCard() {
                         <Typography
                           variant="body1"
                           sx={{
+                            fontFamily: '"Cormorant Garamond", serif',
                             color: '#424242',
-                            fontSize: { xs: '0.95rem', sm: '1.05rem' },
+                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                            fontWeight: 500,
                           }}
                         >
                           {weddingDetails.time}
@@ -531,10 +726,12 @@ export default function InvitationCard() {
                         <Typography
                           variant="h6"
                           sx={{
+                            fontFamily: '"Playfair Display", serif',
                             color: '#2e7d32',
-                            fontSize: { xs: '1rem', sm: '1.15rem' },
-                            fontWeight: 600,
+                            fontSize: { xs: '1.05rem', sm: '1.2rem' },
+                            fontWeight: 700,
                             mb: 0.3,
+                            letterSpacing: '0.01em',
                           }}
                         >
                           {weddingDetails.venue}
@@ -542,8 +739,10 @@ export default function InvitationCard() {
                         <Typography
                           variant="body2"
                           sx={{
+                            fontFamily: '"Cormorant Garamond", serif',
                             color: '#616161',
-                            fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                            fontSize: { xs: '0.9rem', sm: '0.95rem' },
+                            fontWeight: 400,
                           }}
                         >
                           {weddingDetails.address}
@@ -597,11 +796,12 @@ export default function InvitationCard() {
                       <Typography 
                         variant="caption" 
                         sx={{ 
+                          fontFamily: '"Cinzel", serif',
                           color: '#616161',
                           opacity: 0.6,
                           fontWeight: 400,
                           fontSize: { xs: '0.6rem', sm: '0.65rem' },
-                          letterSpacing: '0.1em',
+                          letterSpacing: '0.12em',
                           textTransform: 'uppercase',
                         }}
                       >
