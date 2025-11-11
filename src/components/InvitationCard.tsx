@@ -425,45 +425,111 @@ export default function InvitationCard() {
                     warmly invite
                   </Typography>
 
-                  {/* Guest Name - Highlighted */}
+                  {/* Guest Name - Elegant Display */}
                   <Box
                     sx={{
-                      bgcolor: 'rgba(255, 255, 255, 0.7)',
-                      borderRadius: 2,
-                      p: { xs: 1.5, sm: 2 },
+                      position: 'relative',
                       mb: 2,
-                      boxShadow: '0 4px 16px rgba(46, 125, 50, 0.15)',
-                      border: '2px solid rgba(46, 125, 50, 0.3)',
+                      py: { xs: 2, sm: 2.5 },
+                      px: { xs: 2, sm: 3 },
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '80%',
+                        height: '100%',
+                        bgcolor: 'rgba(255, 255, 255, 0.4)',
+                        borderRadius: 2,
+                        boxShadow: '0 2px 12px rgba(46, 125, 50, 0.1)',
+                        border: '1px solid rgba(46, 125, 50, 0.15)',
+                        zIndex: 0,
+                      },
                     }}
                   >
-                    <Typography 
-                      variant="h5" 
-                      sx={{ 
-                        fontFamily: '"Poppins", sans-serif',
-                        color: '#1b5e20', 
-                        fontWeight: 700,
-                        fontSize: { xs: '1.3rem', sm: '1.6rem' },
-                        letterSpacing: '0.02em',
-                        lineHeight: 1.3,
-                        textAlign: 'center',
-                      }}
-                    >
-                      {invitation.name}
-                    </Typography>
-                    {invitation.totalInvitees > 1 && (
+                    <Box sx={{ position: 'relative', zIndex: 1 }}>
                       <Typography 
-                        variant="body2" 
+                        variant="h4" 
                         sx={{ 
-                          fontFamily: '"Josefin Sans", sans-serif',
-                          color: '#2e7d32', 
-                          fontSize: { xs: '0.85rem', sm: '0.95rem' },
-                          mt: 0.5,
+                          fontFamily: '"Quicksand", sans-serif',
+                          color: '#1b5e20', 
+                          fontWeight: 700,
+                          fontSize: { xs: '1.5rem', sm: '1.9rem' },
+                          letterSpacing: '0.03em',
+                          lineHeight: 1.3,
                           textAlign: 'center',
+                          textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)',
+                          mb: invitation.totalInvitees > 1 ? 1 : 0,
                         }}
                       >
-                        and {invitation.totalInvitees - 1} guest{invitation.totalInvitees > 2 ? 's' : ''}
+                        {invitation.name}
                       </Typography>
-                    )}
+                      
+                      {invitation.totalInvitees > 1 && (
+                        <Box 
+                          sx={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            gap: 1,
+                          }}
+                        >
+                          <Box 
+                            sx={{ 
+                              width: 30, 
+                              height: '1px', 
+                              bgcolor: '#2e7d32', 
+                              opacity: 0.4,
+                            }} 
+                          />
+                          <Box
+                            sx={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 0.8,
+                              bgcolor: 'rgba(46, 125, 50, 0.08)',
+                              borderRadius: 3,
+                              px: 1.5,
+                              py: 0.5,
+                              border: '1px solid rgba(46, 125, 50, 0.2)',
+                            }}
+                          >
+                            <Typography 
+                              sx={{ 
+                                fontFamily: '"Quicksand", sans-serif',
+                                color: '#2e7d32', 
+                                fontSize: { xs: '0.75rem', sm: '0.85rem' },
+                                fontWeight: 600,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.05em',
+                              }}
+                            >
+                              Guests
+                            </Typography>
+                            <Typography 
+                              sx={{ 
+                                fontFamily: '"Quicksand", sans-serif',
+                                color: '#1b5e20', 
+                                fontSize: { xs: '1.1rem', sm: '1.3rem' },
+                                fontWeight: 700,
+                                lineHeight: 1,
+                              }}
+                            >
+                              {invitation.totalInvitees}
+                            </Typography>
+                          </Box>
+                          <Box 
+                            sx={{ 
+                              width: 30, 
+                              height: '1px', 
+                              bgcolor: '#2e7d32', 
+                              opacity: 0.4,
+                            }} 
+                          />
+                        </Box>
+                      )}
+                    </Box>
                   </Box>
 
                   {/* Celebration text */}
@@ -565,8 +631,8 @@ export default function InvitationCard() {
                       textAlign: 'center',
                     }}
                   >
-                    in a Holy Mass at <strong style={{ color: '#2e7d32' }}>{weddingDetails.venue}</strong>,<br />
-                    on <strong style={{ color: '#1b5e20' }}>{weddingDetails.date}</strong>, starting at <strong>{weddingDetails.time}</strong>
+                    in a Holy Mass at <strong style={{ color: '#2e7d32' }}>{weddingDetails.massVenue}</strong>,<br />
+                    on <strong style={{ color: '#1b5e20' }}>{weddingDetails.date}</strong>, starting at <strong>{weddingDetails.massTime}</strong>
                   </Typography>
 
                   {/* Decorative divider */}
@@ -591,7 +657,8 @@ export default function InvitationCard() {
                     }}
                   >
                     Thereafter, a reception party will be held at<br />
-                    <strong style={{ color: '#2e7d32' }}>{weddingDetails.address}</strong>
+                    <strong style={{ color: '#2e7d32' }}>{weddingDetails.receptionVenue}</strong>, <strong style={{ color: '#424242' }}>{weddingDetails.receptionAddress}</strong><br />
+                    starting at <strong>{weddingDetails.receptionTime}</strong>
                   </Typography>
 
                   {/* Decorative divider */}

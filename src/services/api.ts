@@ -15,9 +15,11 @@ export interface InvitationCardWithWedding extends InvitationCard {
     brideName: string;
     groomName: string;
     date: string;
-    time: string;
-    venue: string;
-    address: string;
+    massVenue: string;
+    massTime: string;
+    receptionVenue: string;
+    receptionAddress: string;
+    receptionTime: string;
     dressCode: string;
     rsvpDeadline: string;
   };
@@ -27,10 +29,12 @@ export interface InvitationCardWithWedding extends InvitationCard {
 const WEDDING_DETAILS = {
   brideName: 'Esther',
   groomName: 'Victor',
-  date: 'November 15, 2025',
-  time: '1800 HRS',
-  venue: 'Mawela Hall',
-  address: 'Sinza Kijiweni. Dar es Salaam',
+  date: 'Saturday, 15th November 2025',
+  massVenue: 'St. Gaudence Makoka Parish',
+  massTime: '2:00 p.m.',
+  receptionVenue: 'Mawela Hall',
+  receptionAddress: 'Sinza, Dar es Salaam',
+  receptionTime: '6:00 p.m.',
   dressCode: 'Formal',
   rsvpDeadline: 'November 10, 2025'
 };
