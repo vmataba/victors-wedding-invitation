@@ -390,7 +390,23 @@ export default function InvitationCard() {
                     <Typography sx={{ color: '#66bb6a', fontSize: '1.2rem', opacity: 0.7 }}>🌸</Typography>
                   </Box>
 
-                  {/* Opening line */}
+                  {/* Title */}
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontFamily: '"Cinzel", serif',
+                      color: '#1b5e20',
+                      fontSize: { xs: '1.2rem', sm: '1.4rem' },
+                      mb: 2.5,
+                      fontWeight: 600,
+                      letterSpacing: '0.05em',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    💍 Wedding Invitation
+                  </Typography>
+
+                  {/* Family Introduction */}
                   <Typography
                     variant="body1"
                     sx={{
@@ -399,129 +415,97 @@ export default function InvitationCard() {
                       fontSize: { xs: '0.85rem', sm: '0.95rem' },
                       mb: 2,
                       fontWeight: 400,
-                      fontStyle: 'italic',
-                      letterSpacing: '0.05em',
-                      lineHeight: 1.6,
+                      letterSpacing: '0.03em',
+                      lineHeight: 1.7,
+                      textAlign: 'center',
                     }}
                   >
-                    Together with their families
+                    The family of Natalis Mataba of Maswa, Simiyu,<br />
+                    together with the Organizing Committee,<br />
+                    warmly invite
                   </Typography>
 
-                  {/* Groom & Bride Names - One line with ring */}
-                  <Box 
-                    sx={{ 
+                  {/* Guest Name - Highlighted */}
+                  <Box
+                    sx={{
+                      bgcolor: 'rgba(255, 255, 255, 0.7)',
+                      borderRadius: 2,
+                      p: { xs: 1.5, sm: 2 },
                       mb: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexWrap: 'wrap',
-                      gap: { xs: 1, sm: 1.5 },
+                      boxShadow: '0 4px 16px rgba(46, 125, 50, 0.15)',
+                      border: '2px solid rgba(46, 125, 50, 0.3)',
                     }}
                   >
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontFamily: '"Dancing Script", cursive',
-                        color: '#1b5e20',
-                        fontSize: { xs: '2.5rem', sm: '3.5rem' },
-                        fontWeight: 400,
-                        lineHeight: 1.2,
-                        textShadow: '1px 1px 3px rgba(0,0,0,0.1)',
-                        animation: 'fadeInLeft 1s ease-out',
-                        '@keyframes fadeInLeft': {
-                          '0%': { opacity: 0, transform: 'translateX(-20px)' },
-                          '100%': { opacity: 1, transform: 'translateX(0)' },
-                        },
+                    <Typography 
+                      variant="h5" 
+                      sx={{ 
+                        fontFamily: '"Poppins", sans-serif',
+                        color: '#1b5e20', 
+                        fontWeight: 700,
+                        fontSize: { xs: '1.3rem', sm: '1.6rem' },
+                        letterSpacing: '0.02em',
+                        lineHeight: 1.3,
+                        textAlign: 'center',
                       }}
                     >
-                      {weddingDetails.groomName}
+                      {invitation.name}
                     </Typography>
-                    
-                    {/* Elegant Ampersand with Floral Accent */}
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        position: 'relative',
-                        mx: { xs: 1.5, sm: 2 },
-                        animation: 'fadeIn 1.5s ease-out',
-                        '@keyframes fadeIn': {
-                          '0%': { opacity: 0, transform: 'scale(0.8)' },
-                          '100%': { opacity: 1, transform: 'scale(1)' },
-                        },
-                      }}
-                    >
-                      {/* Top Floral */}
+                    {invitation.totalInvitees > 1 && (
                       <Typography 
+                        variant="body2" 
                         sx={{ 
-                          color: '#81c784', 
-                          fontSize: { xs: '1rem', sm: '1.2rem' },
-                          mb: -0.5,
-                          animation: 'float 3s ease-in-out infinite',
-                          '@keyframes float': {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-5px)' },
-                          },
+                          fontFamily: '"Josefin Sans", sans-serif',
+                          color: '#2e7d32', 
+                          fontSize: { xs: '0.85rem', sm: '0.95rem' },
+                          mt: 0.5,
+                          textAlign: 'center',
                         }}
                       >
-                        🌺
+                        and {invitation.totalInvitees - 1} guest{invitation.totalInvitees > 2 ? 's' : ''}
                       </Typography>
-                      
-                      {/* Ampersand */}
-                      <Typography
-                        sx={{
-                          fontFamily: '"Dancing Script", cursive',
-                          fontSize: { xs: '2.5rem', sm: '3.5rem' },
-                          color: '#2e7d32',
-                          fontWeight: 700,
-                          lineHeight: 1,
-                          textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                          px: 1,
-                        }}
-                      >
-                        &
-                      </Typography>
-                      
-                      {/* Bottom Floral */}
-                      <Typography 
-                        sx={{ 
-                          color: '#66bb6a', 
-                          fontSize: { xs: '1rem', sm: '1.2rem' },
-                          mt: -0.5,
-                          animation: 'float2 3s ease-in-out infinite',
-                          '@keyframes float2': {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(5px)' },
-                          },
-                        }}
-                      >
-                        🌸
-                      </Typography>
-                    </Box>
-                    
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontFamily: '"Dancing Script", cursive',
-                        color: '#1b5e20',
-                        fontSize: { xs: '2.5rem', sm: '3.5rem' },
-                        fontWeight: 400,
-                        lineHeight: 1.2,
-                        textShadow: '1px 1px 3px rgba(0,0,0,0.1)',
-                        animation: 'fadeInRight 1s ease-out',
-                        '@keyframes fadeInRight': {
-                          '0%': { opacity: 0, transform: 'translateX(20px)' },
-                          '100%': { opacity: 1, transform: 'translateX(0)' },
-                        },
-                      }}
-                    >
-                      {weddingDetails.brideName}
-                    </Typography>
+                    )}
                   </Box>
 
-                  {/* Request line */}
+                  {/* Celebration text */}
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontFamily: '"Josefin Sans", sans-serif',
+                      color: '#424242',
+                      fontSize: { xs: '0.85rem', sm: '0.95rem' },
+                      mb: 2,
+                      fontWeight: 400,
+                      letterSpacing: '0.03em',
+                      lineHeight: 1.7,
+                      textAlign: 'center',
+                    }}
+                  >
+                    to the joyful celebration of the marriage of their son,
+                  </Typography>
+
+                  {/* Groom Name */}
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontFamily: '"Dancing Script", cursive',
+                      color: '#1b5e20',
+                      fontSize: { xs: '2.5rem', sm: '3.5rem' },
+                      fontWeight: 400,
+                      lineHeight: 1.2,
+                      textShadow: '1px 1px 3px rgba(0,0,0,0.1)',
+                      mb: 1.5,
+                      textAlign: 'center',
+                      animation: 'fadeInLeft 1s ease-out',
+                      '@keyframes fadeInLeft': {
+                        '0%': { opacity: 0, transform: 'translateX(-20px)' },
+                        '100%': { opacity: 1, transform: 'translateX(0)' },
+                      },
+                    }}
+                  >
+                    {weddingDetails.groomName},
+                  </Typography>
+
+                  {/* Exchange vows text */}
                   <Typography
                     variant="body1"
                     sx={{
@@ -530,13 +514,69 @@ export default function InvitationCard() {
                       fontSize: { xs: '0.85rem', sm: '0.95rem' },
                       mb: 1.5,
                       fontWeight: 400,
-                      letterSpacing: '0.05em',
-                      lineHeight: 1.6,
+                      letterSpacing: '0.03em',
+                      lineHeight: 1.7,
+                      textAlign: 'center',
                     }}
                   >
-                    request the honour of your presence
+                    who will exchange vows with
                   </Typography>
 
+                  {/* Bride Name */}
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontFamily: '"Dancing Script", cursive',
+                      color: '#1b5e20',
+                      fontSize: { xs: '2.5rem', sm: '3.5rem' },
+                      fontWeight: 400,
+                      lineHeight: 1.2,
+                      textShadow: '1px 1px 3px rgba(0,0,0,0.1)',
+                      mb: 2.5,
+                      textAlign: 'center',
+                      animation: 'fadeInRight 1s ease-out',
+                      '@keyframes fadeInRight': {
+                        '0%': { opacity: 0, transform: 'translateX(20px)' },
+                        '100%': { opacity: 1, transform: 'translateX(0)' },
+                      },
+                    }}
+                  >
+                    {weddingDetails.brideName},
+                  </Typography>
+
+                  {/* Decorative divider */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, my: 2.5 }}>
+                    <Box sx={{ width: 70, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
+                    <Typography sx={{ color: '#66bb6a', fontSize: '1rem' }}>🌺</Typography>
+                    <Box sx={{ width: 70, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
+                  </Box>
+
+                  {/* Ceremony Details */}
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontFamily: '"Josefin Sans", sans-serif',
+                      color: '#424242',
+                      fontSize: { xs: '0.85rem', sm: '0.95rem' },
+                      mb: 2,
+                      fontWeight: 400,
+                      letterSpacing: '0.03em',
+                      lineHeight: 1.7,
+                      textAlign: 'center',
+                    }}
+                  >
+                    in a Holy Mass at <strong style={{ color: '#2e7d32' }}>{weddingDetails.venue}</strong>,<br />
+                    on <strong style={{ color: '#1b5e20' }}>{weddingDetails.date}</strong>, starting at <strong>{weddingDetails.time}</strong>
+                  </Typography>
+
+                  {/* Decorative divider */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, my: 2 }}>
+                    <Box sx={{ width: 50, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
+                    <Typography sx={{ color: '#81c784', fontSize: '0.9rem' }}>🌿</Typography>
+                    <Box sx={{ width: 50, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
+                  </Box>
+
+                  {/* Reception Details */}
                   <Typography
                     variant="body1"
                     sx={{
@@ -545,201 +585,40 @@ export default function InvitationCard() {
                       fontSize: { xs: '0.85rem', sm: '0.95rem' },
                       mb: 2.5,
                       fontWeight: 400,
-                      letterSpacing: '0.05em',
-                      lineHeight: 1.6,
+                      letterSpacing: '0.03em',
+                      lineHeight: 1.7,
+                      textAlign: 'center',
                     }}
                   >
-                    at the celebration of their marriage
+                    Thereafter, a reception party will be held at<br />
+                    <strong style={{ color: '#2e7d32' }}>{weddingDetails.address}</strong>
                   </Typography>
 
                   {/* Decorative divider */}
                   <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, my: 2 }}>
-                    <Box sx={{ width: 70, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
-                    <Typography sx={{ color: '#66bb6a', fontSize: '1rem' }}>🌺</Typography>
-                    <Box sx={{ width: 70, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
+                    <Box sx={{ width: 40, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
+                    <Typography sx={{ color: '#d4af37', fontSize: '0.9rem', opacity: 0.6 }}>💚</Typography>
+                    <Box sx={{ width: 40, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
                   </Box>
 
-                  {/* Guest Details - Compact Design */}
-                  <Box
+                  {/* Closing Message */}
+                  <Typography
+                    variant="body2"
                     sx={{
-                      position: 'relative',
-                      bgcolor: 'rgba(255, 255, 255, 0.65)',
-                      borderRadius: 2,
-                      p: { xs: 1.8, sm: 2.2 },
-                      boxShadow: '0 4px 16px rgba(46, 125, 50, 0.1)',
-                      border: '1px solid rgba(46, 125, 50, 0.2)',
+                      fontFamily: '"Josefin Sans", sans-serif',
+                      color: '#424242',
+                      fontSize: { xs: '0.8rem', sm: '0.9rem' },
+                      fontStyle: 'italic',
+                      fontWeight: 400,
+                      letterSpacing: '0.03em',
+                      lineHeight: 1.7,
+                      textAlign: 'center',
                       mb: 2,
-                      display: 'flex',
-                      flexDirection: { xs: 'column', sm: 'row' },
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: { xs: 1.5, sm: 2 },
                     }}
                   >
-                    {/* Guest Name Section */}
-                    <Box sx={{ 
-                      flex: 1,
-                      textAlign: { xs: 'center', sm: 'left' },
-                      minWidth: 0,
-                    }}>
-                      <Typography 
-                        variant="caption" 
-                        sx={{ 
-                          fontFamily: '"Cinzel", serif',
-                          color: '#6b8e23', 
-                          fontSize: { xs: '0.65rem', sm: '0.7rem' },
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.12em',
-                          fontWeight: 600,
-                          display: 'block',
-                          mb: 0.5,
-                        }}
-                      >
-                        Warmly Welcomed
-                      </Typography>
-                      <Typography 
-                        variant="h5" 
-                        sx={{ 
-                          fontFamily: '"Poppins", sans-serif',
-                          color: '#1b5e20', 
-                          fontWeight: 600,
-                          fontSize: { xs: '1.1rem', sm: '1.3rem' },
-                          letterSpacing: '0.02em',
-                          lineHeight: 1.2,
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                      >
-                        {invitation.name}
-                      </Typography>
-                    </Box>
-
-                    {/* Vertical Divider */}
-                    <Box sx={{ 
-                      display: { xs: 'none', sm: 'block' },
-                      width: '1px', 
-                      height: 40, 
-                      bgcolor: 'rgba(46, 125, 50, 0.25)',
-                    }} />
-
-                    {/* Guest Count Badge */}
-                    <Box sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1.5,
-                      bgcolor: 'rgba(46, 125, 50, 0.1)',
-                      borderRadius: 1.5,
-                      px: { xs: 2, sm: 2.5 },
-                      py: 1,
-                      border: '1px solid rgba(46, 125, 50, 0.25)',
-                    }}>
-                      <Box sx={{ textAlign: 'center' }}>
-                        <Typography 
-                          variant="caption" 
-                          sx={{ 
-                            fontFamily: '"Cinzel", serif',
-                            color: '#6b8e23', 
-                            fontSize: '0.65rem',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.1em',
-                            fontWeight: 600,
-                            display: 'block',
-                          }}
-                        >
-                          Guests
-                        </Typography>
-                        <Typography 
-                          variant="h4" 
-                          sx={{ 
-                            fontFamily: '"Poppins", sans-serif',
-                            color: '#2e7d32', 
-                            fontWeight: 700,
-                            fontSize: { xs: '1.8rem', sm: '2rem' },
-                            lineHeight: 1,
-                            mt: 0.3,
-                          }}
-                        >
-                          {invitation.totalInvitees}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-
-                  {/* Decorative divider */}
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, my: 2 }}>
-                    <Box sx={{ width: 70, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
-                    <Typography sx={{ color: '#81c784', fontSize: '1rem' }}>🌿</Typography>
-                    <Box sx={{ width: 70, height: '1px', bgcolor: '#2e7d32', opacity: 0.3 }} />
-                  </Box>
-
-                  {/* Event Details Box */}
-                  <Box
-                    sx={{
-                      bgcolor: 'rgba(255, 255, 255, 0.5)',
-                      borderRadius: 2,
-                      p: { xs: 1.5, sm: 2 },
-                      mb: 2,
-                      boxShadow: '0 4px 12px rgba(46, 125, 50, 0.15)',
-                    }}
-                  >
-                    <Stack spacing={1.5} sx={{ textAlign: 'center' }}>
-                      <Box>
-                        <Typography
-                          variant="h5"
-                          sx={{
-                            fontFamily: '"Josefin Sans", sans-serif',
-                            color: '#1b5e20',
-                            fontSize: { xs: '1.2rem', sm: '1.4rem' },
-                            fontWeight: 600,
-                            mb: 0.3,
-                            letterSpacing: '0.02em',
-                          }}
-                        >
-                          {weddingDetails.date}
-                        </Typography>
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            fontFamily: '"Josefin Sans", sans-serif',
-                            color: '#424242',
-                            fontSize: { xs: '1rem', sm: '1.1rem' },
-                            fontWeight: 400,
-                          }}
-                        >
-                          from {weddingDetails.time}
-                        </Typography>
-                      </Box>
-
-                      <Divider sx={{ borderColor: '#2e7d32', opacity: 0.3 }} />
-
-                      <Box>
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontFamily: '"Josefin Sans", sans-serif',
-                            color: '#2e7d32',
-                            fontSize: { xs: '1.05rem', sm: '1.2rem' },
-                            fontWeight: 600,
-                            mb: 0.3,
-                            letterSpacing: '0.01em',
-                          }}
-                        >
-                          {weddingDetails.venue}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            fontFamily: '"Josefin Sans", sans-serif',
-                            color: '#616161',
-                            fontSize: { xs: '0.9rem', sm: '0.95rem' },
-                            fontWeight: 400,
-                          }}
-                        >
-                          {weddingDetails.address}
-                        </Typography>
-                      </Box>
-                    </Stack>
-                  </Box>
+                    Your presence and blessings will be deeply appreciated<br />
+                    as we share in this moment of love and joy.
+                  </Typography>
 
                   {/* RSVP Link */}
                   <Box sx={{ mt: 2.5, textAlign: 'center' }}>
