@@ -4,18 +4,16 @@ import {
   Box,
   Card,
   Typography,
-  Divider,
   CircularProgress,
   Alert,
   Button,
   Fade,
   Slide,
   Container,
-  Stack,
 } from '@mui/material';
 import { QRCodeSVG } from 'qrcode.react';
-import { fetchInvitationByGuestId } from '../services/api';
-import type { InvitationCardWithWedding as InvitationCardType } from '../services/api';
+import { fetchInvitationByGuestId } from '../services/card-vew.service';
+import type { InvitationCardWithWedding as InvitationCardType } from '../services/card-vew.service';
 import brideGroomImage from '../assets/bride-n-groom.jpg';
 
 export default function InvitationCard() {
@@ -454,19 +452,19 @@ export default function InvitationCard() {
                         sx={{ 
                           fontFamily: '"Quicksand", sans-serif',
                           color: '#1b5e20', 
-                          fontWeight: 700,
-                          fontSize: { xs: '1.5rem', sm: '1.9rem' },
-                          letterSpacing: '0.03em',
-                          lineHeight: 1.3,
+                          fontWeight: 500,
+                          fontSize: { xs: '1.2rem', sm: '1.5rem' },
+                          letterSpacing: '0.02em',
+                          lineHeight: 1.4,
                           textAlign: 'center',
                           textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)',
-                          mb: invitation.totalInvitees > 1 ? 1 : 0,
+                          mb: (invitation.totalInvitees ?? 0) > 1 ? 1 : 0,
                         }}
                       >
                         {invitation.name}
                       </Typography>
                       
-                      {invitation.totalInvitees > 1 && (
+                      {(invitation.totalInvitees ?? 0) > 1 && (
                         <Box 
                           sx={{ 
                             display: 'flex', 
@@ -499,10 +497,10 @@ export default function InvitationCard() {
                               sx={{ 
                                 fontFamily: '"Quicksand", sans-serif',
                                 color: '#2e7d32', 
-                                fontSize: { xs: '0.75rem', sm: '0.85rem' },
-                                fontWeight: 600,
+                                fontSize: { xs: '0.7rem', sm: '0.75rem' },
+                                fontWeight: 500,
                                 textTransform: 'uppercase',
-                                letterSpacing: '0.05em',
+                                letterSpacing: '0.08em',
                               }}
                             >
                               Guests
@@ -511,8 +509,8 @@ export default function InvitationCard() {
                               sx={{ 
                                 fontFamily: '"Quicksand", sans-serif',
                                 color: '#1b5e20', 
-                                fontSize: { xs: '1.1rem', sm: '1.3rem' },
-                                fontWeight: 700,
+                                fontSize: { xs: '1rem', sm: '1.1rem' },
+                                fontWeight: 600,
                                 lineHeight: 1,
                               }}
                             >

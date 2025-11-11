@@ -32,8 +32,8 @@ import { Html5Qrcode } from 'html5-qrcode';
 import {
   verifyInvitationByCardNumber,
   verifyInvitationByQRCode,
-} from '../services/api';
-import type { InvitationCardWithWedding } from '../services/api';
+} from '../services/card-vew.service';
+import type { InvitationCardWithWedding } from '../services/card-vew.service';
 
 interface TabPanelProps {
   children?: React.ReactNode;
