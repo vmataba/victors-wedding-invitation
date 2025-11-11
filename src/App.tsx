@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useSearchParams, useNavigate, BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import InvitationCard from './components/InvitationCard';
 import VerificationSystem from './components/VerificationSystem';
+import { useEffect } from 'react';
 
 // Create Material Design theme with custom colors
 const theme = createTheme({
@@ -56,19 +57,34 @@ const theme = createTheme({
   },
 });
 
+const AppWrapper = (props: any) => {
+  const [searchParams] = useSearchParams();
+  const path = searchParams.get('path') ?? null;
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (path) {
+      navigate(path);
+    }
+  });
+  return <>{props.children}</>
+}
+
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/verify" replace />} />
-          <Route path="/verify" element={<VerificationSystem />} />
-          <Route path="/invitation/:guestIdentifier" element={<InvitationCard />} />
-          <Route path="*" element={<Navigate to="/verify" replace />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter basename='/victors-wedding-invitation'>
+         <AppWrapper>
+          <Routes>
+            <Route path="/" element={<Navigate to="/verify" replace />} />
+            <Route path="/verify" element={<VerificationSystem />} />
+            <Route path="/:guestIdentifier" element={<InvitationCard />} />
+            <Route path="*" element={<Navigate to="/verify" replace />} />
+          </Routes>
+          </AppWrapper>
+        </BrowserRouter>
+      </ThemeProvider>
+    
   );
 }
 

@@ -13,7 +13,6 @@ import {
   Container,
   Stack,
 } from '@mui/material';
-import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
 import { QRCodeSVG } from 'qrcode.react';
 import { fetchInvitationByGuestId } from '../services/api';
 import type { InvitationCardWithWedding as InvitationCardType } from '../services/api';
@@ -707,7 +706,7 @@ export default function InvitationCard() {
                             fontWeight: 400,
                           }}
                         >
-                          at {weddingDetails.time}
+                          from {weddingDetails.time}
                         </Typography>
                       </Box>
 
@@ -734,28 +733,11 @@ export default function InvitationCard() {
                             color: '#616161',
                             fontSize: { xs: '0.9rem', sm: '0.95rem' },
                             fontWeight: 400,
-                            mb: 1.5,
                           }}
                         >
                           {weddingDetails.address}
                         </Typography>
                       </Box>
-
-                      <Divider sx={{ borderColor: '#2e7d32', opacity: 0.3 }} />
-
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          fontFamily: '"Josefin Sans", sans-serif',
-                          color: '#424242',
-                          fontSize: { xs: '0.85rem', sm: '0.9rem' },
-                          fontWeight: 400,
-                          fontStyle: 'italic',
-                          letterSpacing: '0.05em',
-                        }}
-                      >
-                        Reception to follow
-                      </Typography>
                     </Stack>
                   </Box>
 

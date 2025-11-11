@@ -28,7 +28,7 @@ const WEDDING_DETAILS = {
   brideName: 'Esther',
   groomName: 'Victor',
   date: 'November 15, 2025',
-  time: 'From 1800 HRS',
+  time: '1800 HRS',
   venue: 'Mawela Hall',
   address: 'Sinza Kijiweni. Dar es Salaam',
   dressCode: 'Formal',
@@ -151,9 +151,9 @@ export const verifyInvitationByQRCode = async (qrData: string): Promise<Invitati
 /**
  * Simulates API call to update RSVP status
  */
-export const updateRSVPStatus = async (guestId: string, confirmed: boolean): Promise<void> => {
+/*export const updateRSVPStatus = async (guestId: string, confirmed: boolean): Promise<void> => {
   await new Promise(resolve => setTimeout(resolve, 500));
   
-  const invitation = invitationDatabase.find(inv => inv.id === guestId.toUpperCase());
+  //const invitation = invitationDatabase.find(inv => inv.id === guestId.toUpperCase());
   // Note: confirmed status would need to be added to InvitationCard interface if needed
-};
+};*/
