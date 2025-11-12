@@ -7,4 +7,6 @@ export interface Invitee {
     paidAmount?: number
     registrationType?: any
     adminId?: string
+    rsvpStatus?: 'pending' | 'accepted' | 'declined'
+    rsvpDate?: string
 }

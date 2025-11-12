@@ -12,6 +12,8 @@ export interface InvitationCard {
   name: string;
   totalInvitees?: number;
   personalMessage?: string;
+  rsvpStatus?: 'pending' | 'accepted' | 'declined';
+  rsvpDate?: string;
 }
 
 export interface InvitationCardWithWedding extends InvitationCard {
@@ -79,7 +81,9 @@ export const fetchInvitationByGuestId = async (guestId: string): Promise<Invitat
     cardNumber: invitee.id,
     name: invitee.name,
     totalInvitees: computeTotalGuests(invitee.paidAmount),
-    personalMessage: "Dear " + invitee.name + ", we would be delighted to have you join us on our special day!"
+    personalMessage: "Dear " + invitee.name + ", we would be delighted to have you join us on our special day!",
+    rsvpStatus: invitee.rsvpStatus || 'pending',
+    rsvpDate: invitee.rsvpDate
   }
 
   return {
@@ -115,4 +119,44 @@ export const verifyInvitationByQRCode = async (qrData: string): Promise<Invitati
     // If not JSON, try as direct guest ID
     return await fetchInvitationByGuestId(qrData);
   }
+};
+
+/**
+ * Accept invitation - Update invitee RSVP status to accepted
+ */
+export const acceptInvitation = async (guestId: string): Promise<void> => {
+  const invitee = await viewInvitee(guestId);
+  
+  if (!invitee) {
+    throw new Error('Invitee not found');
+  }
+
+  // Update invitee with accepted status
+  const updatedInvitee = {
+    ...invitee,
+    rsvpStatus: 'accepted',
+    rsvpDate: new Date().toISOString(),
+  };
+
+  await updateInvitee(updatedInvitee);
+};
+
+/**
+ * Decline invitation - Update invitee RSVP status to declined
+ */
+export const declineInvitation = async (guestId: string): Promise<void> => {
+  const invitee = await viewInvitee(guestId);
+  
+  if (!invitee) {
+    throw new Error('Invitee not found');
+  }
+
+  // Update invitee with declined status
+  const updatedInvitee = {
+    ...invitee,
+    rsvpStatus: 'declined',
+    rsvpDate: new Date().toISOString(),
+  };
+
+  await updateInvitee(updatedInvitee);
 };
