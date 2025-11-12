@@ -66,6 +66,7 @@ export default function VerificationSystem() {
   const [verifiedInvitation, setVerifiedInvitation] = useState<InvitationCardWithWedding | null>(null);
   const [scannerActive, setScannerActive] = useState(false);
   const [scannerError, setScannerError] = useState<string | null>(null);
+  const [requestingPermission, setRequestingPermission] = useState(false);
   const qrCodeScannerRef = useRef<Html5Qrcode | null>(null);
   const scannerContainerRef = useRef<HTMLDivElement>(null);
 
@@ -103,32 +104,97 @@ export default function VerificationSystem() {
   const startScanner = async () => {
     try {
       setScannerError(null);
+      setRequestingPermission(true);
+      
+      // Check if running on HTTPS (required for camera access)
+      if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+        setScannerError(
+          'Camera access requires HTTPS. Please use manual verification or access the site via HTTPS.'
+        );
+        setRequestingPermission(false);
+        return;
+      }
+      
+      // Check if camera API is available
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        setScannerError(
+          'Camera access is not supported in this browser. Please use manual verification or try a different browser.'
+        );
+        setRequestingPermission(false);
+        return;
+      }
+      
+      // Check camera permissions using Permissions API if available
+      if (navigator.permissions && navigator.permissions.query) {
+        try {
+          const permissionStatus = await navigator.permissions.query({ name: 'camera' as PermissionName });
+          
+          if (permissionStatus.state === 'denied') {
+            setScannerError(
+              'Camera access is blocked. Please enable camera permissions in your browser settings and reload the page.'
+            );
+            setRequestingPermission(false);
+            return;
+          }
+        } catch (permError) {
+          // Permissions API might not support camera query on all browsers, continue anyway
+          console.log('Permissions API check failed:', permError);
+        }
+      }
+
+      // Initialize the QR code scanner
       const html5QrCode = new Html5Qrcode('qr-reader');
       qrCodeScannerRef.current = html5QrCode;
 
-      await html5QrCode.start(
-        { facingMode: 'environment' },
-        {
-          fps: 10,
-          qrbox: { width: 250, height: 250 },
-        },
-        async (decodedText) => {
-          // Successfully scanned
-          await stopScanner();
-          handleQRCodeScanned(decodedText);
-        },
-        (errorMessage) => {
-          // Scanning error (can be ignored for most cases)
-          console.log('QR Scan error:', errorMessage);
-        }
-      );
+      try {
+        await html5QrCode.start(
+          { facingMode: 'environment' },
+          {
+            fps: 10,
+            qrbox: { width: 250, height: 250 },
+          },
+          async (decodedText) => {
+            // Successfully scanned
+            await stopScanner();
+            handleQRCodeScanned(decodedText);
+          },
+          (errorMessage) => {
+            // Scanning error (can be ignored for most cases)
+            console.log('QR Scan error:', errorMessage);
+          }
+        );
 
-      setScannerActive(true);
-    } catch (err) {
-      console.error('Scanner start error:', err);
+        setScannerActive(true);
+        setRequestingPermission(false);
+      } catch (startError: any) {
+        console.error('Html5Qrcode start error:', startError);
+        
+        // Handle specific Html5Qrcode errors
+        if (startError.message && startError.message.includes('NotAllowedError')) {
+          setScannerError(
+            'Camera access denied. Please allow camera permissions when prompted and try again.'
+          );
+        } else if (startError.message && startError.message.includes('NotFoundError')) {
+          setScannerError(
+            'No camera found. Please ensure your device has a camera or use manual verification.'
+          );
+        } else if (startError.message && startError.message.includes('NotReadableError')) {
+          setScannerError(
+            'Camera is in use by another application. Please close other apps and try again.'
+          );
+        } else {
+          setScannerError(
+            'Failed to start camera: ' + (startError.message || 'Unknown error') + '. Please try manual verification.'
+          );
+        }
+        setRequestingPermission(false);
+      }
+    } catch (err: any) {
+      console.error('Scanner initialization error:', err);
       setScannerError(
-        'Unable to access camera. Please ensure camera permissions are granted or use manual verification.'
+        'Unable to initialize camera scanner: ' + (err.message || 'Unknown error') + '. Please use manual verification.'
       );
+      setRequestingPermission(false);
     }
   };
 
@@ -261,21 +327,25 @@ export default function VerificationSystem() {
                               sx={{ fontSize: 80, color: 'text.secondary', mb: 2 }}
                             />
                             <Typography variant="h6" gutterBottom>
-                              Ready to Scan
+                              {requestingPermission ? 'Requesting Camera Access...' : 'Ready to Scan'}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                              Position the QR code within the camera frame
+                              {requestingPermission 
+                                ? 'Please allow camera access in your browser'
+                                : 'Position the QR code within the camera frame'
+                              }
                             </Typography>
                           </Paper>
                           <Button
                             variant="contained"
                             size="large"
-                            startIcon={<QrCodeScanner />}
+                            startIcon={requestingPermission ? <CircularProgress size={20} color="inherit" /> : <QrCodeScanner />}
                             onClick={startScanner}
+                            disabled={requestingPermission}
                             fullWidth
                             sx={{ py: 1.5 }}
                           >
-                            Start Camera
+                            {requestingPermission ? 'Requesting Permission...' : 'Start Camera'}
                           </Button>
                         </Box>
                       </Slide>
