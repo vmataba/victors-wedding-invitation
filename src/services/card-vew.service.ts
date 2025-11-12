@@ -132,7 +132,7 @@ export const acceptInvitation = async (guestId: string): Promise<void> => {
   }
 
   // Update invitee with accepted status
-  const updatedInvitee = {
+  const updatedInvitee: Invitee = {
     ...invitee,
     rsvpStatus: 'accepted',
     rsvpDate: new Date().toISOString(),
@@ -152,7 +152,7 @@ export const declineInvitation = async (guestId: string): Promise<void> => {
   }
 
   // Update invitee with declined status
-  const updatedInvitee = {
+  const updatedInvitee: Invitee = {
     ...invitee,
     rsvpStatus: 'declined',
     rsvpDate: new Date().toISOString(),
