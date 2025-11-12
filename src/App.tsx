@@ -73,7 +73,7 @@ function App() {
   return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <BrowserRouter basename='/victors-wedding-invitation'>
+        <BrowserRouter basename='/'>
          <AppWrapper>
           <Routes>
             <Route path="/" element={<Navigate to="/verify" replace />} />

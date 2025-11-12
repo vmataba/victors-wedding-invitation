@@ -38,7 +38,7 @@ const WEDDING_DETAILS = {
   date: 'Saturday, 15th November 2025',
   massVenue: 'St. Gaudence Makoka Parish',
   massTime: '2:00 p.m.',
-  receptionVenue: 'Mawela Hall',
+  receptionVenue: 'Mawela Hall - Business',
   receptionAddress: 'Sinza, Dar es Salaam',
   receptionTime: '6:00 p.m.',
   dressCode: 'Formal',
