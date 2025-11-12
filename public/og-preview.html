@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <title>OG Image Preview - Victor & Esther Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Josefin+Sans:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+            font-family: 'Josefin Sans', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 50%, #e8f5e9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* Background decorative circles */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(46, 125, 50, 0.1) 0%, transparent 50%), 
+                        radial-gradient(circle at 80% 80%, rgba(139, 195, 74, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* Falling stars decoration */
+        .star {
+            position: absolute;
+            color: #d4af37;
+            z-index: 3;
+            animation: fallingStar 8s linear infinite;
+        }
+        
+        .star-1 { top: -20px; left: 10%; font-size: 1.2rem; animation-delay: 0s; }
+        .star-2 { top: -30px; right: 15%; font-size: 1rem; animation-delay: 2s; }
+        .star-3 { top: -10px; left: 5%; font-size: 0.9rem; animation-delay: 4s; }
+        .star-4 { top: -25px; right: 8%; font-size: 1.1rem; animation-delay: 6s; }
+        
+        @keyframes fallingStar {
+            0% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { opacity: 0; transform: translate(100px, 650px) rotate(360deg); }
+        }
+        
+        .card {
+            background: white;
+            width: 950px;
+            height: 550px;
+            padding: 50px 60px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border: 3px solid #d4af37;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(240, 255, 245, 0.80) 50%, rgba(255, 255, 255, 0.85) 100%);
+            border-radius: 9px;
+            z-index: -1;
+        }
+        
+        .ornament {
+            font-size: 1.5rem;
+            color: #66bb6a;
+            margin-bottom: 15px;
+        }
+        
+        .title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+        
+        .subtitle {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.1rem;
+            color: #424242;
+            margin-bottom: 25px;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
+        
+        .names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: #1b5e20;
+            margin: 20px 0;
+            line-height: 1.1;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .divider-line {
+            width: 80px;
+            height: 1px;
+            background: #2e7d32;
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            font-size: 1rem;
+            color: #66bb6a;
+        }
+        
+        .date {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.4rem;
+            color: #1b5e20;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        .venue {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            color: #2e7d32;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        .footer {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.95rem;
+            color: #424242;
+            margin-top: 20px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Falling stars -->
+    <div class="star star-1">✨</div>
+    <div class="star star-2">⭐</div>
+    <div class="star star-3">✨</div>
+    <div class="star star-4">⭐</div>
+    
+    <div class="card">
+        <!-- Decorative top flourish -->
+        <div class="ornament">🌸 🤍 🌸</div>
+        
+        <!-- Title -->
+        <div class="title">💍 Wedding Invitation</div>
+        
+        <!-- Subtitle -->
+        <div class="subtitle">
+            The family of Natalis Mataba warmly invites you<br>
+            to celebrate the marriage of
+        </div>
+        
+        <!-- Names -->
+        <div class="names">
+            Victor & Esther
+        </div>
+        
+        <!-- Decorative divider -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">🌺</div>
+            <div class="divider-line"></div>
+        </div>
+        
+        <!-- Date -->
+        <div class="date">Saturday, 15th November 2025</div>
+        
+        <!-- Venue -->
+        <div class="venue">
+            St. Gaudence Makoka Parish • 2:00 p.m.<br>
+            Reception: Mawela Hall - Business, Sinza
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Your presence and blessings will be deeply appreciated
+        </div>
+    </div>
+</body>
+</html>
