@@ -451,7 +451,7 @@ export default function InvitationCard() {
                         top: 0,
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        width: '80%',
+                        width: { xs: '92%', sm: '88%' },
                         height: '100%',
                         bgcolor: 'rgba(255, 255, 255, 0.4)',
                         borderRadius: 2,
@@ -461,19 +461,29 @@ export default function InvitationCard() {
                       },
                     }}
                   >
-                    <Box sx={{ position: 'relative', zIndex: 1 }}>
+                    <Box sx={{ position: 'relative', zIndex: 1, maxWidth: '100%', px: { xs: 1, sm: 2 } }}>
                       <Typography 
                         variant="h4" 
                         sx={{ 
                           fontFamily: '"Quicksand", sans-serif',
                           color: '#1b5e20', 
                           fontWeight: 500,
-                          fontSize: { xs: '1.2rem', sm: '1.5rem' },
+                          fontSize: { 
+                            xs: 'clamp(0.9rem, 4vw, 1.2rem)', 
+                            sm: 'clamp(1.1rem, 3vw, 1.5rem)' 
+                          },
                           letterSpacing: '0.02em',
                           lineHeight: 1.4,
                           textAlign: 'center',
                           textShadow: '1px 1px 2px rgba(255, 255, 255, 0.8)',
                           mb: (invitation.totalInvitees ?? 0) > 1 ? 1 : 0,
+                          wordWrap: 'break-word',
+                          overflowWrap: 'break-word',
+                          wordBreak: 'break-word',
+                          hyphens: 'auto',
+                          maxWidth: '100%',
+                          overflow: 'hidden',
+                          display: 'block',
                         }}
                       >
                         {invitation.name}

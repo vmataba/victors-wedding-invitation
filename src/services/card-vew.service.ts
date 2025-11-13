@@ -4,6 +4,7 @@ import {
     updateInFirebase
 } from "../config/firebase.config";
 import type {Invitee} from "../models/invitee.model";
+import { treatAsDouble } from "../treat-as-double.config";
 
 // Invitation Card Interfaces
 export interface InvitationCard {
@@ -68,7 +69,11 @@ export const fetchInvitationByGuestId = async (guestId: string): Promise<Invitat
     throw new Error('Invitation not found. Please check your guest identifier.');
   }
 
-  const computeTotalGuests = (amount: number) => {
+  const computeTotalGuests = (amount: number, id: string) => {
+   // Check if ID is in treatAsDouble and amount is exactly 100000
+   if (treatAsDouble.includes(id) && amount === 100000) {
+    return 2;
+   }
    if (amount > 100000) {
     return 2;
    } else if (amount > 50000) {
@@ -80,7 +85,7 @@ export const fetchInvitationByGuestId = async (guestId: string): Promise<Invitat
     id: invitee.id,
     cardNumber: invitee.id,
     name: invitee.name,
-    totalInvitees: computeTotalGuests(invitee.paidAmount),
+    totalInvitees: computeTotalGuests(invitee.paidAmount, invitee.id),
     personalMessage: "Dear " + invitee.name + ", we would be delighted to have you join us on our special day!",
     rsvpStatus: invitee.rsvpStatus || 'pending',
     rsvpDate: invitee.rsvpDate
