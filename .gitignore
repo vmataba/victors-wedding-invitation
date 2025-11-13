@@ -27,3 +27,4 @@ src/config
 .github
 # Local Netlify folder
 .netlify
+send-invite
