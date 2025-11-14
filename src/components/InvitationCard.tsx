@@ -489,7 +489,7 @@ export default function InvitationCard() {
                         {invitation.name}
                       </Typography>
                       
-                      {(invitation.totalInvitees ?? 0) > 1 && (
+                      {(invitation.totalInvitees ?? 0) >= 1 && (
                         <Box 
                           sx={{ 
                             display: 'flex', 
@@ -521,25 +521,14 @@ export default function InvitationCard() {
                             <Typography 
                               sx={{ 
                                 fontFamily: '"Quicksand", sans-serif',
-                                color: '#2e7d32', 
-                                fontSize: { xs: '0.7rem', sm: '0.75rem' },
-                                fontWeight: 500,
+                                color: '#1b5e20', 
+                                fontSize: { xs: '0.8rem', sm: '0.85rem' },
+                                fontWeight: 600,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.08em',
                               }}
                             >
-                              Guests
-                            </Typography>
-                            <Typography 
-                              sx={{ 
-                                fontFamily: '"Quicksand", sans-serif',
-                                color: '#1b5e20', 
-                                fontSize: { xs: '1rem', sm: '1.1rem' },
-                                fontWeight: 600,
-                                lineHeight: 1,
-                              }}
-                            >
-                              {invitation.totalInvitees}
+                              {(invitation.totalInvitees ?? 0) > 1 ? 'Double' : 'Single'}
                             </Typography>
                           </Box>
                           <Box 

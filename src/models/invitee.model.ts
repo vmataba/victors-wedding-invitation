@@ -9,4 +9,5 @@ export interface Invitee {
     adminId?: string
     rsvpStatus?: 'pending' | 'accepted' | 'declined'
     rsvpDate?: string
+    treatAsDouble?: boolean
 }
