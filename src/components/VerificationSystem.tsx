@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Card,
@@ -13,7 +12,6 @@ import {
   Paper,
   Fade,
   Stack,
-  Divider,
 } from '@mui/material';
 import {
   Input,
@@ -27,7 +25,6 @@ import {
 import type { InvitationCardWithWedding } from '../services/card-vew.service';
 
 export default function VerificationSystem() {
-  const navigate = useNavigate();
   const [cardNumber, setCardNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -70,13 +67,6 @@ export default function VerificationSystem() {
   };
 
 
-  const handleViewInvitation = () => {
-    if (verifiedInvitation) {
-      navigate(`/invitation/${verifiedInvitation.id}`);
-    }
-  };
-
-
   return (
     <Box
       sx={{
@@ -108,7 +98,7 @@ export default function VerificationSystem() {
                   fontSize: { xs: '2rem', sm: '3rem' },
                 }}
               >
-                Verify Your Invitation
+                Verify Invitee's Card
               </Typography>
               <Typography
                 variant="body1"
@@ -358,29 +348,6 @@ export default function VerificationSystem() {
                               </Typography>
                             </Box>
                           </Box>
-
-                          {/* Action Button */}
-                          <Button
-                            variant="contained"
-                            size="large"
-                            onClick={handleViewInvitation}
-                            fullWidth
-                            sx={{ 
-                              mt: 2, 
-                              py: 1.5,
-                              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                              boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)',
-                              fontWeight: 600,
-                              fontSize: '1rem',
-                              textTransform: 'none',
-                              '&:hover': {
-                                background: 'linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%)',
-                                boxShadow: '0 6px 20px rgba(102, 126, 234, 0.6)',
-                              }
-                            }}
-                          >
-                            View Full Invitation
-                          </Button>
                         </Stack>
                       </Paper>
                     </Box>
