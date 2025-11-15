@@ -10,4 +10,6 @@ export interface Invitee {
     rsvpStatus?: 'pending' | 'accepted' | 'declined'
     rsvpDate?: string
     treatAsDouble?: boolean
+    cardVerified?: boolean
+    verifiedAt?: string
 }

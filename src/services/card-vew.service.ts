@@ -31,6 +31,7 @@ export interface InvitationCardWithWedding extends InvitationCard {
   };
 }
 
+
 // Wedding Details - Constant for all invitations
 const WEDDING_DETAILS = {
   brideName: 'Esther',
@@ -97,32 +98,47 @@ export const fetchInvitationByGuestId = async (guestId: string): Promise<Invitat
 };
 
 /**
- * Verify invitation by card number (placeholder for future implementation)
+ * Mark a card as verified
  */
-export const verifyInvitationByCardNumber = async (cardNumber: string): Promise<InvitationCardWithWedding> => {
-  // For now, redirect to fetchInvitationByGuestId
-  return await fetchInvitationByGuestId(cardNumber);
+export const markCardAsVerified = async (guestId: string): Promise<void> => {
+  const invitee = await viewInvitee(guestId);
+  
+  if (!invitee) {
+    throw new Error('Invitee not found');
+  }
+
+  const updatedInvitee: Invitee = {
+    ...invitee,
+    cardVerified: true,
+    verifiedAt: new Date().toISOString(),
+  };
+
+  await updateInvitee(updatedInvitee);
 };
 
 /**
- * Verify invitation by QR code data
+ * Verify invitation by card number (exact match only)
  */
-export const verifyInvitationByQRCode = async (qrData: string): Promise<InvitationCardWithWedding> => {
-  try {
-    // QR code should contain JSON with guestId or cardNumber
-    const data = JSON.parse(qrData);
-    
-    if (data.guestId) {
-      return await fetchInvitationByGuestId(data.guestId);
-    } else if (data.cardNumber) {
-      return await verifyInvitationByCardNumber(data.cardNumber);
-    }
-    
-    throw new Error('Invalid QR code format');
-  } catch (error) {
-    // If not JSON, try as direct guest ID
-    return await fetchInvitationByGuestId(qrData);
+export const verifyInvitationByCardNumber = async (cardNumber: string): Promise<InvitationCardWithWedding> => {
+  // Remove spaces and normalize
+  const normalizedCardNumber = cardNumber.replace(/\s+/g, '').toUpperCase().trim();
+  
+  const invitee = await viewInvitee(normalizedCardNumber);
+  
+  if (!invitee) {
+    throw new Error('Invitation not found. Please check your card number and try again.');
   }
+  
+  // Check if card has already been verified
+  if (invitee.cardVerified) {
+    throw new Error(`This invitation card has already been verified on ${new Date(invitee.verifiedAt || '').toLocaleString()}. Each card can only be verified once.`);
+  }
+  
+  // Mark card as verified
+  await markCardAsVerified(normalizedCardNumber);
+  
+  // Return the invitation details
+  return await fetchInvitationByGuestId(normalizedCardNumber);
 };
 
 /**

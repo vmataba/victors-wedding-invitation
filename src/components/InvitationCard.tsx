@@ -18,7 +18,6 @@ import {
   DialogContentText,
   DialogActions,
 } from '@mui/material';
-import { QRCodeSVG } from 'qrcode.react';
 import { fetchInvitationByGuestId, acceptInvitation, declineInvitation } from '../services/card-vew.service';
 import type { InvitationCardWithWedding as InvitationCardType } from '../services/card-vew.service';
 import brideGroomImage from '../assets/bride-n-groom.jpg';
@@ -855,34 +854,13 @@ export default function InvitationCard() {
                           color: '#424242',
                           opacity: 0.85,
                           fontWeight: 500,
-                          fontSize: { xs: '0.7rem', sm: '0.75rem' },
+                          fontSize: { xs: '0.85rem', sm: '0.95rem' },
                           letterSpacing: '0.12em',
                           textTransform: 'uppercase',
                         }}
                       >
                         Serial No: {invitation.id.replace(/(.{3})/g, '$1 ').trim()}
                       </Typography>
-                    </Box>
-
-                    {/* QR Code - Bottom Right */}
-                    <Box
-                      sx={{
-                        position: 'absolute',
-                        bottom: 8,
-                        right: { xs: 8, sm: 16 },
-                        bgcolor: 'white',
-                        p: 0.5,
-                        borderRadius: 1,
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                      }}
-                    >
-                      <QRCodeSVG
-                        value={`${window.location.origin}/invitation/${invitation.id}`}
-                        size={55}
-                        level="M"
-                        includeMargin={false}
-                        fgColor="#1b5e20"
-                      />
                     </Box>
                   </Box>
                 </Box>
